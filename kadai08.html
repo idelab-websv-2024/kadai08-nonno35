@@ -17,7 +17,14 @@
             oneline.innerHTML += "<br>";
             oneline.innerHTML += r["artistName"];
             oneline.innerHTML += "<hr />";
+            var imgElement = document.createElement('img');
+            imgElement.src = r.artworkUrl100;
+            imgElement.alt = r.collectionName;
+            imgElement.width = 100; 
+            imgElement.innerHTML += r["artworkUrl100"];
+            imgElement.innerHTML += "<hr />";
             output.appendChild(oneline);
+            output.appendChild(imgElement);
         }
     }
 
@@ -33,6 +40,7 @@
 
         statusField.innerHTML = '';
     }
+   
     </script>
 
   </head>
@@ -43,7 +51,7 @@
 <div id='outputArea'></div>
 <input type="text" id='title'>
 <input type='button' id='searchWord' value='検索' onclick="startRequest()"/>
-
+<img src="https://is4-ssl.mzstatic.com/image/thumb/Music4/v4/e5/8e/d9/e58ed9a0-217b-939b-5d29-96e56338fba6/source/100x100bb.jpg">
 
 <script id='caller'></script>
 
