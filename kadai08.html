@@ -1,5 +1,8 @@
-<!DOCTYPE="utf-8">
+<!DOCTYPE html>
+<html lang="ja">
+
   <head>
+  <meta charset="utf-8" />
     <title></title>
 
     <script>
@@ -20,12 +23,12 @@
 
     function startRequest() {
         var statusField = document.getElementById('status');
-        var s = '手嶌';
+        var s = document.getElementById('title').value;
         alert(s);
         var searchString = encodeURIComponent(s);
         alert(searchString);
 
-        var iTunesURI = 'https://itunes.apple.com/search?term='+searchString+'&callback=searchCallback';
+        var iTunesURI = 'https://itunes.apple.com/search?term='+searchString+'&media=music&lang=ja_JP&country=jp&callback=searchCallback';
         document.getElementById('caller').setAttribute('src', iTunesURI);
 
         statusField.innerHTML = '';
@@ -38,6 +41,7 @@
 
 <div id='status'></div>
 <div id='outputArea'></div>
+<input type="text" id='title'>
 <input type='button' id='searchWord' value='検索' onclick="startRequest()"/>
 
 
