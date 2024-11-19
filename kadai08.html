@@ -11,7 +11,8 @@
     function searchCallback(result) {
         output = document.getElementById('outputArea');
         results = result.results;
-        for (var r of results) {
+
+        /*for (var r of results) {
             var oneline = document.createElement('div');
             oneline.innerHTML = r["collectionName"];
             oneline.innerHTML += "<br>";
@@ -25,35 +26,40 @@
             imgElement.innerHTML += "<hr />";
             imgElement.src = r['artworkUrl100'];
             output.appendChild(oneline);
-            oneline.appendChild(imgElement);
-           /* var table = document.createElement('table');
+            oneline.appendChild(imgElement);*/
+
+
+            var table = document.createElement('table');
+
             for (var r of results){
-              var oneline = document.createElement("tr");
+              var oneline = document.createElement('tr');
 
               var trackNAme = document.createElement("td");
-              trackNAme.innerHTML = ["collectionName"];
+              trackNAme.innerHTML = r["collectionName"];
               oneline.appendChild(trackNAme);
 
               var artist = document.createElement("td");
-              artist.innerHTML = ["artistName"];
+              artist.innerHTML = r["artistName"];
               oneline.appendChild(artist);
 
               var imgtd = document.createElement("td");
               var img = document.createElement("img");
-              img.src = ["artworkUrl100"];
-              oneline.appendChild(imgtd);
+              img.src = r["artworkUrl100"];
               imgtd.appendChild(img);
+              oneline.appendChild(imgtd);
+              table.appendChild(oneline);
             }
-            table.appendChild(oneline);*/
+            output.appendChild(table);
+
         }
-    }
+    
 
     function startRequest() {
         var statusField = document.getElementById('status');
         var s = document.getElementById('title').value;
-        alert(s);
+        // alert(s);
         var searchString = encodeURIComponent(s);
-        alert(searchString);
+        // alert(searchString);
 
         var iTunesURI = 'https://itunes.apple.com/search?term='+searchString+'&media=music&lang=ja_JP&country=jp&callback=searchCallback';
         document.getElementById('caller').setAttribute('src', iTunesURI);
